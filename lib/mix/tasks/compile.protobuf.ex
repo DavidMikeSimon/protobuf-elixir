@@ -34,7 +34,7 @@ defmodule Mix.Tasks.Compile.Protobuf do
   end
 
   @doc """
-  Returns Protobuf manifests.
+  Returns Protobuf manifest file paths.
   """
   def manifests, do: [manifest()]
   defp manifest, do: Path.join(Mix.Project.manifest_path, @manifest)
@@ -44,6 +44,6 @@ defmodule Mix.Tasks.Compile.Protobuf do
   """
   def clean do
     dest = Mix.Project.compile_path
-    # Mix.Compilers.Elixir.clean(manifest(), dest)
+    Mix.Compilers.Protobuf.clean(manifest(), dest)
   end
 end
